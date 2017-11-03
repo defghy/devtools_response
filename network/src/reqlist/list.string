@@ -1,0 +1,17 @@
+<div class="reqlist">
+    <div class="list">
+        <table class="data">
+            <tr class="data-grid-filler-row" v-for="(item, index) in list">
+                <td class="name-column" v-bind:title="item.url">
+                    <span class="hidden network-badge"></span>
+                    <div class="network-path">
+                        {{item.pathname}}
+                    </div>
+                    <div class="network-cell-subtitle">
+                        {{item.host}}
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

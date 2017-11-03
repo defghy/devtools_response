@@ -1,0 +1,60 @@
+.reqlist {
+    color: rgb(48, 57, 66);
+    font-family: '.SFNSDisplay-Regular', 'Helvetica Neue', 'Lucida Grande', sans-serif;
+    line-height: 120%;
+    display: flex;
+
+    .list {
+        flex: 1;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    table.data {
+        width: 100%;
+        position: relative;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        border-top: 0 none transparent;
+        table-layout: fixed;
+
+        tr{
+            &.odd {
+                background-color: rgb(245, 245, 245);
+            }
+            &:nth-child(odd) {
+                background-color: rgb(245, 245, 245);
+            }
+        }
+
+
+        td {
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            line-height: 18px;
+            height: 18px;
+            border-left: 1px solid #aaa;
+            padding: 1px 4px;
+
+            &.name-column {
+                cursor: pointer;
+            }
+
+            .network-cell-subtitle {
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                font-weight: normal;
+                color: gray;
+            }
+
+            .network-path {
+                text-overflow: ellipsis;
+                overflow: hidden;
+            }
+        }
+    }
+}

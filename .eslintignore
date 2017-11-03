@@ -1,0 +1,7 @@
+/.tmp/**
+/docs/**
+/mock/**
+/prd/**
+/src/**
+/node_modules/**
+/fekit_modules/**

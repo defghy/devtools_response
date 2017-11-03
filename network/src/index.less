@@ -1,0 +1,54 @@
+body {
+    margin: 0; padding: 0;
+}
+
+.filter {
+    height: 25px;
+    background-color: #f3f3f3;
+    flex: none;
+    flex-wrap: wrap;
+    align-items: center;
+    border-bottom: 1px solid #dadada;
+    display: flex;
+    flex-direction: row !important;
+    position: relative;
+    padding: 2px 5px;
+
+    .filter-text {
+        border: 1px solid rgb(163, 163, 163);
+        border-radius: 2px;
+        padding: 1px 3px 0;
+        margin: 0 0 0 3px;
+        width: 143px;
+        height: 20px;
+        line-height: 17px;
+        display: inline-block;
+        background: #FFF;
+        overflow: hidden;
+        white-space: nowrap;
+        cursor: auto;
+        outline: none;
+    }
+
+    .btn-clr {
+        outline: none;
+        margin-left: 5px;
+        border-radius: 30px; border: none;
+        cursor: pointer;
+        background: #0f88eb;
+        color: #fff;
+    }
+
+    .btn-switch {
+        margin-left: 5px;
+        border-radius: 50px; width: 15px; height: 15px; outline: none;
+        vertical-align: middle;
+        border: none;
+        cursor: pointer;
+        background-color: rgb(110, 110, 110);
+
+        &.active {
+            background-color: rgb(216, 0, 0);
+        }
+    }
+}

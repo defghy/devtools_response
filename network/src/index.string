@@ -1,0 +1,12 @@
+<div id="app">
+    <div class="filter">
+        <input class="filter-text" type="text" v-model="filterText" placeholder="response filter"/>
+        <button type="button" class="btn-clr" v-on:click="clearList">清空</button>
+        <button type="button" class="btn-switch"
+            v-bind:class="{ active: reqSwitch}"
+            v-on:click="changeReqSwitch"></button>
+    </div>
+    <reqlist
+        v-bind:reqSwitch="reqSwitch"
+        v-bind:filterText="filterText"></reqlist>
+</div>

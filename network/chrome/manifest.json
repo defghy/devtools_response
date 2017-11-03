@@ -1,0 +1,30 @@
+{
+  "name": "Response",
+  "version": "1.0.0",
+  "description": "Chrome devtools extension for filter response",
+  "manifest_version": 2,
+
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+  "web_accessible_resources": [ "devtools.html", "devtools-background.html", "build/res.js" ],
+
+  "devtools_page": "devtools.html",
+
+  "background": {
+    "scripts": [ "build/resback.js" ],
+    "persistent": false
+  },
+
+  "permissions": [
+    "http://*/*",
+    "https://*/*",
+    "file:///*"
+  ],
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["build/resback.js"],
+      "run_at": "document_start"
+    }
+  ]
+}
