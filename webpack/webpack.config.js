@@ -2,9 +2,10 @@ var path = require('path');
 var webpack = require('webpack');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var CleanPlugin = require('clean-webpack-plugin');
-
-const BUILD_PATH = path.resolve(__dirname, "network", "chrome", "build");
-const SRC_PATH = path.resolve(__dirname, "network", "src");
+debugger;
+const ROOT_PATH = process.cwd();
+const BUILD_PATH = path.resolve(ROOT_PATH, "network", "chrome", "build");
+const SRC_PATH = path.resolve(ROOT_PATH, "network", "src");
 
 module.exports = {
   entry: {
@@ -20,7 +21,7 @@ module.exports = {
     alias: {
         vue:  "vue/dist/vue.js"
     },
-    modules: [path.resolve(__dirname, "src"), 'node_modules'],
+    modules: [path.resolve(ROOT_PATH, "src"), 'node_modules'],
   },
   module: {
     rules: [
@@ -95,12 +96,12 @@ module.exports = {
   devtool: process.env.NODE_ENV !== 'production'
     ? '#inline-source-map'
     : "eval",
-  devServer: {
-      contentBase: path.resolve(__dirname),
+/*  devServer: {
+      contentBase: ROOT_PATH,
       compress: true,
       port: 8080,
 
-  }/*,
+  }*//*,
   plugins: [
     new webpack.LoaderOptionsPlugin({
       options: {

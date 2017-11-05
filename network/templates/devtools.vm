@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>response</title>
-    <link rel="stylesheet" type="text/css" href="/css/res.css">
+    <link rel="stylesheet" type="text/css" href="./build/css/res.css">
   </head>
   <body>
     <div id="container"></div>

@@ -35,5 +35,6 @@ var app = window.app = new Vue({
 chrome.devtools.panels.create('Response', 'logo.png',
     'devtools.html', function (panel) {
         // panel loaded
+        debugger;
     }
 );

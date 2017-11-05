@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --open",
+    "start": "webpack-dev-server",
     "dev": "export NODE_ENV=dev && webpack --watch",
     "build": "export NODE_ENV=production && webpack"
   },
@@ -34,6 +34,7 @@
     "postcss-loader": "^2.0.6",
     "raw-loader": "^0.5.1",
     "style-loader": "^0.18.2",
+    "velocity": "^0.7.2",
     "vue": "^2.4.2",
     "webpack": "^3.5.4",
     "webpack-dev-server": "^2.7.1"

@@ -5,12 +5,12 @@
   "manifest_version": 2,
 
   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
-  "web_accessible_resources": [ "devtools.html", "devtools-background.html", "build/res.js" ],
+  "web_accessible_resources": [ "devtools.html", "devtools-background.html", "build/js/res.js" ],
 
   "devtools_page": "devtools.html",
 
   "background": {
-    "scripts": [ "build/resback.js" ],
+    "scripts": [ "build/js/resback.js" ],
     "persistent": false
   },
 
@@ -23,7 +23,7 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["build/resback.js"],
+      "js": ["build/js/resback.js"],
       "run_at": "document_start"
     }
   ]
