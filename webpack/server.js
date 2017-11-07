@@ -12,7 +12,11 @@ const SRC_PATH = 'src';
 const REDIRECT_RULES = {
 	"/": "/devtools.vm",
 	"/devtools.html": "/devtools.vm",
-	"/background.html": "/devtools-background.vm"
+	"/background.html": "/devtools-background.vm",
+
+	"/api$": "http://smarthotel.beta.qunar.com/api",
+	'^/bind/(.*)$':  `http://smarthotel.beta.qunar.com/bind/$1`,
+	'^/push/(.*)$':  "http://smarthotel.beta.qunar.com/push/$1"
 };
 const DEV_CONFIG = {
 	path: {
@@ -37,6 +41,7 @@ const webpackDevMiddlewareInstance = webpackDevMiddleware(compiler, {
 
 const app = new Express();
 app.use(webpackDevMiddlewareInstance);
+
 // 转发html
 var Engine = require('velocity').Engine;
 app.use(async (req, res, next) => {
@@ -60,7 +65,46 @@ app.use(async (req, res, next) => {
 
 });
 
-app.listen(PORT, (err) => {
+// 转发api
+var httpProxy = require('http-proxy').createProxyServer({});
+var _url = require('url');
+app.use(async (req, res, next) => {
+	// 设置转发
+	var ruleNames = Object.keys(REDIRECT_RULES)
+		.filter(ruleName => !REDIRECT_RULES[ruleName].endsWith('.vm'));
+	var ruleName = ruleNames.find(ruleName => {
+		return ruleName === req.url || new RegExp(ruleName).test(req.url);
+	});
+	if(ruleName) {
+		var target = REDIRECT_RULES[ruleName];
+		target = target.replace('$1', new RegExp(ruleName).exec(req.url)[1] || '');
+		target = _url.parse(target);
+		req.url = target.path;
+		httpProxy.web(req, res, {
+          target: `${target.protocol}//${target.host}`,
+          changeOrigin: true
+        }, function (e) {
+          // 连接服务器错误
+          res.writeHead(502, { 'Content-Type': 'text/html' });
+          res.end(e.toString());
+        });
+		//next();
+	} else {
+		next();
+	}
+
+});
+
+
+var server = require('http').createServer(app);
+server.on('upgrade', function (req, socket, head) {
+  debugger;
+  httpProxy.ws(req, socket, head, {
+  	target: 'ws://smarthotel.beta.qunar.com',
+  	changeOrigin: true
+  });
+});
+server.listen(PORT, (err) => {
 	if (err) {
 	  console.error(err);
 	} else {
