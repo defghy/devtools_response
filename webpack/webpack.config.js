@@ -2,7 +2,6 @@ var path = require('path');
 var webpack = require('webpack');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var CleanPlugin = require('clean-webpack-plugin');
-debugger;
 const ROOT_PATH = process.cwd();
 const BUILD_PATH = path.resolve(ROOT_PATH, "network", "chrome", "build");
 const SRC_PATH = path.resolve(ROOT_PATH, "network", "src");

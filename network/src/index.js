@@ -73,9 +73,6 @@ window.test = {
     }
 };
 
-
-
-
 // 初始化
 chrome.devtools.panels.create('Response', 'logo.png',
     'devtools.html', function (panel) {
